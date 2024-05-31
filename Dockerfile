@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     make \
     cmake \
     libcunit1 libcunit1-doc libcunit1-dev \
-    qemu-system-arm  # Installation de QEMU pour émuler des systèmes ARM
+    qemu-system-arm
 
 # Définir le répertoire de travail
 WORKDIR /Users/HP/project_CICD
@@ -23,4 +23,4 @@ RUN gcc -Wall -g -I/usr/include -c TestProtocol.c -o TestProtocol.o
 RUN gcc -Wall -g -o my_project.bin SWC.o TestProtocol.o -L/usr/lib -lcunit
 
 # Commande par défaut pour émuler le firmware
-CMD ["qemu-system-arm", "-M", "versatilepb", "-kernel", "my_project.bin", "-nographic"]
+CMD ["qemu-system-arm", "-M", "versatilepb", "-kernel", "my_project.bin", "-nographic", "-display", "none", "-serial", "mon:stdio"]

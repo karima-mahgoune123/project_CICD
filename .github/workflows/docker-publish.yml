@@ -52,7 +52,4 @@ jobs:
           name: my_project.bin
           path: my_project.bin
 
-      # Emulate the firmware using QEMU
-      - name: Emulate my_project.bin
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/usr/src/myapp -w /usr/src/myapp my_project qemu-system-arm -M versatilepb -kernel my_project.bin -nographic -display none -soundhw none -serial mon:stdio
+      
